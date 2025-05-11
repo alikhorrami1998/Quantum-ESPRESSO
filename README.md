@@ -46,8 +46,8 @@ This project simplifies the process with:
    
 2. **Run the installation script:**
    ```bash
-   chmod +x scripts/install.sh
-   ./scripts/install.sh
+   chmod +x install.sh
+   ./install.sh
 
 ## 📚 Documentation
 
