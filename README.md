@@ -39,15 +39,10 @@ This project simplifies the process with:
 
 ## 🚀 Quick Start
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/alikhorrami1998/Quantum-ESPRESSO.git
-   cd Quantum-ESPRESSO
    
-2. **Run the installation script:**
+ **Run the installation script:**
    ```bash
-   chmod +x install.sh
-   ./install.sh
+bash <(curl -Ls https://raw.githubusercontent.com/alikhorrami1998/Quantum-ESPRESSO/refs/heads/main/install.sh)
 
 ## 📚 Documentation
 
