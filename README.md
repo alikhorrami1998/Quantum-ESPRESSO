@@ -43,7 +43,7 @@ This project simplifies the process with:
  **Run the installation script:**
    ```bash
 bash <(curl -Ls https://raw.githubusercontent.com/alikhorrami1998/Quantum-ESPRESSO/refs/heads/main/install.sh)
-
+   ```
 ## 📚 Documentation
 
 Troubleshooting – Common problems and how to fix them
