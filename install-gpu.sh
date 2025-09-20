@@ -3,9 +3,9 @@ set -e
 
 # ---------------- Variables ----------------
 SCALAPACK_PREFIX="/usr/local/scalapack"
-QE_VERSION="7.4.1"
+QE_VERSION="7.5.0"
 QE_DIR="q-e"
-QE_TAR_URL="https://www.quantum-espresso.org/download/software/qe-${QE_VERSION}-ReleasePack.tar.gz"
+QE_TAR_URL="https://gitlab.com/QEF/q-e/-/archive/qe-7.5/q-e-qe-7.5.tar.gz"
 INSTALL_PREFIX="/usr/local/quantum_espresso"
 BUILD_DIR="build"
 
@@ -14,6 +14,7 @@ echo "Installing prerequisites..."
 sudo apt update
 sudo apt install -y \
   build-essential \
+  gfortran \
   cmake \
   git \
   wget \
@@ -24,10 +25,8 @@ sudo apt install -y \
   libfftw3-dev \
   libhdf5-openmpi-dev \
   libxc-dev \
-  pkg-config \
-  libscalapack-mpi-dev \
-  libelpa-dev \
-  libspglib-dev
+  pkg-config
+
 # ---------------- SCALAPACK from GitHub ----------------
 echo "Cloning SCALAPACK from GitHub..."
 cd /tmp
@@ -44,12 +43,6 @@ cmake .. \
   -DLAPACK_LIBRARIES="${LAPACK_LIB}" \
   -DMPI_C_COMPILER=mpicc \
   -DMPI_Fortran_COMPILER=mpifort
-    -DQE_ENABLE_CUDA=ON \
-  -DQE_ENABLE_OPENACC=ON \
-  -DQE_ENABLE_OPENMP=ON \
-  -DCMAKE_C_COMPILER=nvc \
-  -DCMAKE_CXX_COMPILER=nvc++ \
-  -DCMAKE_Fortran_COMPILER=nvfortran
 
 make -j$(nproc)
 sudo make install
@@ -70,7 +63,13 @@ cmake .. \
   -DQE_ENABLE_SCALAPACK=ON \
   -DQE_ENABLE_LIBXC=ON \
   -DQE_ENABLE_TEST=ON \
+  -DQE_ENABLE_ELPA=OFF \
+  -DQE_ENABLE_FOX=OFF \
+  -DQE_ENABLE_ENVIRON=NO \
   -DQE_FFTW_VENDOR=FFTW3 \
+  -DQE_LAPACK_INTERNAL=OFF \
+  -DQE_ENABLE_BARRIER=OFF \
+  -DQE_ENABLE_TRACE=OFF \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}" \
   -DSCALAPACK_DIR="${SCALAPACK_PREFIX}/lib"
