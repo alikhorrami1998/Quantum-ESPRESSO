@@ -51,7 +51,7 @@ sudo make install
 echo "Downloading and building Quantum ESPRESSO ${QE_VERSION}..."
 cd ~
 wget -c "${QE_TAR_URL}"
-tar -xzf "qe-${QE_VERSION}-ReleasePack.tar.gz"
+tar -xzf "q-e-qe-7.5.tar.gz"
 mv qe-${QE_VERSION} "${QE_DIR}"
 cd "${QE_DIR}"
 mkdir -p "${BUILD_DIR}"
