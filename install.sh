@@ -3,7 +3,7 @@ set -e
 
 # ---------------- Variables ----------------
 SCALAPACK_PREFIX="/usr/local/scalapack"
-QE_VERSION="7.4.1"
+QE_VERSION="7.5"
 QE_DIR="q-e"
 QE_TAR_URL="https://www.quantum-espresso.org/download/software/qe-${QE_VERSION}-ReleasePack.tar.gz"
 INSTALL_PREFIX="/usr/local/quantum_espresso"
