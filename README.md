@@ -1,7 +1,7 @@
 # Quantum ESPRESSO Easy Install 🚀
 
 Welcome to **Quantum ESPRESSO Easy Install**!  
-This repository provides a streamlined, automated solution for installing **Quantum ESPRESSO (QE) version 7.4.1** on Ubuntu with full support for **parallel computing (MPI)**, **SCALAPACK**, **HDF5**, and more.  
+This repository provides a streamlined, automated solution for installing **Quantum ESPRESSO (QE) version 7.5** on Ubuntu with full support for **parallel computing (MPI)**, **SCALAPACK**, **HDF5**, and more.  
 Whether you're a researcher, student, or computational scientist, this guide will get you up and running with QE in no time! 🎉
 
 ---
@@ -21,7 +21,7 @@ This project simplifies the process with:
 
 ## 🛠 Features
 
-- Automated installation of **Quantum ESPRESSO 7.4.1** on **Ubuntu 20.04+**
+- Automated installation of **Quantum ESPRESSO 7.5** on **Ubuntu 20.04+**
 - Full support for **MPI**, **SCALAPACK**, **HDF5**, and **LIBXC**
 - Included **example input** and **pseudopotential** for Silicon SCF calculation
 - Helpful **troubleshooting** documentation
