@@ -3,9 +3,9 @@ set -e
 
 # ---------------- Variables ----------------
 SCALAPACK_PREFIX="/usr/local/scalapack"
-QE_VERSION="7.5.0"
+QE_VERSION="7.5"
 QE_DIR="q-e"
-QE_TAR_URL="https://gitlab.com/QEF/q-e/-/archive/qe-7.5/q-e-qe-7.5.tar.gz"
+QE_TAR_URL="https://www.quantum-espresso.org/download/software/qe-${QE_VERSION}-ReleasePack.tar.gz"
 INSTALL_PREFIX="/usr/local/quantum_espresso"
 BUILD_DIR="build"
 
@@ -51,28 +51,28 @@ sudo make install
 echo "Downloading and building Quantum ESPRESSO ${QE_VERSION}..."
 cd ~
 wget -c "${QE_TAR_URL}"
-tar -xzf "q-e-qe-7.5.tar.gz"
+tar -xzf "qe-${QE_VERSION}-ReleasePack.tar.gz"
 mv qe-${QE_VERSION} "${QE_DIR}"
 cd "${QE_DIR}"
 mkdir -p "${BUILD_DIR}"
 cd "${BUILD_DIR}"
 
 cmake .. \
-  -DQE_ENABLE_MPI=ON \
-  -DQE_ENABLE_HDF5=ON \
-  -DQE_ENABLE_SCALAPACK=ON \
-  -DQE_ENABLE_LIBXC=ON \
-  -DQE_ENABLE_TEST=ON \
-  -DQE_ENABLE_ELPA=OFF \
-  -DQE_ENABLE_FOX=OFF \
-  -DQE_ENABLE_ENVIRON=NO \
-  -DQE_FFTW_VENDOR=FFTW3 \
-  -DQE_LAPACK_INTERNAL=OFF \
-  -DQE_ENABLE_BARRIER=OFF \
-  -DQE_ENABLE_TRACE=OFF \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}" \
-  -DSCALAPACK_DIR="${SCALAPACK_PREFIX}/lib"
+ -DCMAKE_INSTALL_PREFIX="${INSTALL_PREFIX}" \
+ -DCMAKE_Fortran_COMPILER=nvfortran \
+ -DCMAKE_C_COMPILER=nvc \
+ -DCMAKE_CXX_COMPILER=nvc++ \
+ -DQE_ENABLE_MPI=ON \
+ -DQE_ENABLE_OPENMP=ON \
+ -DQE_ENABLE_HDF5=ON -DHDF5_PREFER_PARALLEL=ON \
+ -DQE_ENABLE_LIBXC=ON \
+ -DQE_ENABLE_SCALAPACK=ON \
+ -DQE_ENABLE_CUDA=ON -DQE_ENABLE_OPENACC=ON \
+ -DBLA_VENDOR=OpenBLAS \
+ -DCMAKE_BUILD_TYPE=Release \
+ -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
+ -DCMAKE_CUDA_ARCHITECTURES=80
+
 
 make -j$(nproc)
 sudo make install
