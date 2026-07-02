@@ -13,20 +13,33 @@ BUILD_DIR="build"
 echo "Installing prerequisites..."
 sudo apt update
 sudo apt install -y \
-  build-essential \
-  gfortran \
-  cmake \
-  git \
-  wget \
-  libopenmpi-dev \
-  openmpi-bin \
-  libblas-dev \
-  liblapack-dev \
-  libfftw3-dev \
-  libhdf5-openmpi-dev \
-  libxc-dev \
-  pkg-config
-
+    build-essential \
+    gfortran \
+    cmake \
+    git \
+    wget \
+    pkg-config \
+    bison \
+    flex \
+    g++ \
+    make \
+    checkinstall \
+    python3 \
+    gnuplot \
+    openmpi-bin \
+    openmpi-doc \
+    libopenmpi-dev \
+    libblas-dev \
+    liblapack-dev \
+    libopenblas-dev \
+    libfftw3-dev \
+    libxc-dev \
+    libreadline-dev \
+    libnetcdf-dev \
+    libnetcdff-dev \
+    libscalapack-mpi-dev \
+    libscalapack-openmpi-dev \
+    libhdf5-openmpi-dev
 # ---------------- SCALAPACK from GitHub ----------------
 echo "Cloning SCALAPACK from GitHub..."
 cd /tmp
