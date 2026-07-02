@@ -87,3 +87,6 @@ echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${INSTALL_PREFIX}/lib:${SCALAPACK
 source ~/.bashrc
 
 echo "✅ Quantum ESPRESSO ${QE_VERSION} installed successfully!"
+
+echo "=== fix   Quantum ESPRESSO ==="
+export OMP_NUM_THREADS=1
